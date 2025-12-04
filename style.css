@@ -1,0 +1,414 @@
+/* 1. CSS Variables and Reset */
+:root {
+    /* Color Palette */
+    --color-primary: #007bff; /* Blue for CTAs/links */
+    --color-secondary: #6c757d; /* Gray for subtle elements */
+    --color-text: #333;
+    --color-bg-light: #f8f9fa; /* Light background for sections */
+    --color-white: #fff;
+    
+    /* Typography */
+    --font-primary: 'Poppins', sans-serif;
+    --font-size-base: 18px; /* Set a base font size for rem calculation */
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: var(--font-size-base); /* Used for rem calculations */
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* 2. Skip Link (Accessibility) */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 8px;
+    z-index: 100;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* 3. Header and Navigation (Flexbox) */
+.site-header {
+    background: var(--color-white);
+    border-bottom: 1px solid #eee;
+    padding: var(--spacing-sm) 0;
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* Flexbox for search and logo grouping */
+.logo-search {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex; /* Flexbox for horizontal navigation */
+    gap: var(--spacing-md);
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-text);
+    transition: color 0.25s ease; /* Hover effect/transition requirement */
+}
+
+.main-nav a:hover {
+    color: var(--color-primary);
+}
+
+.auth-buttons button {
+    margin-left: var(--spacing-xs);
+}
+
+/* 4. Buttons and Transitions */
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.btn-primary, .btn-cta {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover, .btn-cta:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Subtle hover effect */
+}
+
+/* 5. Hero Section */
+.hero-section {
+    background: var(--color-bg-light);
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.hero-search {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-md);
+}
+
+.hero-search input {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    width: 300px;
+}
+
+.hero-search .btn {
+    border-radius: 0 4px 4px 0;
+    padding: 1rem 2rem;
+}
+
+/* 6. Section Styling */
+section {
+    padding: var(--spacing-lg) 0;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-size: 2rem;
+}
+
+/* 7. Popular Categories (CSS Grid) */
+.category-grid {
+    display: grid;
+    /* Default: 4 columns for desktop */
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    text-align: center;
+}
+
+.category-card {
+    padding: var(--spacing-md);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: box-shadow 0.25s ease;
+}
+
+.category-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 8. Featured Courses (CSS Grid) */
+.course-grid {
+    display: grid;
+    /* Default: 3 columns for desktop */
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.course-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.course-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.course-card h3 {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    text-align: left;
+}
+
+.course-card .rating, .course-card .price {
+    padding: 0 var(--spacing-sm) var(--spacing-sm);
+}
+
+/* 9. Testimonials (Flexbox) */
+.testimonial-cards {
+    display: flex; /* Flexbox for testimonial layout */
+    justify-content: space-around;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    text-align: center;
+}
+
+.testimonial-card {
+    flex: 1;
+    max-width: 500px;
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* 10. Contact Form */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--font-primary);
+}
+
+/* 11. Footer (Flexbox) */
+.site-footer {
+    background-color: var(--color-text);
+    color: var(--color-white);
+    padding-top: var(--spacing-lg);
+}
+
+.site-footer .flex-layout {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: var(--spacing-md);
+    gap: var(--spacing-md);
+}
+
+.footer-nav ul {
+    list-style: none;
+}
+
+.footer-nav a {
+    color: var(--color-white);
+    text-decoration: none;
+    display: block;
+    padding: var(--spacing-xs) 0;
+}
+
+.copyright {
+    text-align: center;
+    padding: var(--spacing-sm) 0;
+    border-top: 1px solid #444;
+}
+
+/* 12. Media Queries for Responsiveness */
+
+/* Tablet Breakpoint (~768px and below) */
+@media (max-width: 768px) {
+    /* Header/Nav: Stack header items */
+    .site-header .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .main-nav {
+        width: 100%;
+    }
+
+    .main-nav ul {
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .logo-search {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .search-form {
+        flex-grow: 1; /* Allow search form to take up space */
+    }
+
+    .auth-buttons {
+        align-self: flex-end; /* Keep buttons aligned right */
+    }
+
+    /* Grid Layouts: Single column for <= 768px */
+    .category-grid,
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablet */
+    }
+
+    /* Testimonials: Stack columns */
+    .testimonial-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Footer: Stack sections */
+    .site-footer .flex-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-nav ul {
+        padding-top: var(--spacing-sm);
+    }
+}
+
+/* Mobile Breakpoint (≤480px) */
+@media (max-width: 480px) {
+    /* Base font size reduction for smaller screens */
+    html {
+        font-size: 16px;
+    }
+
+    /* Header/Nav Adjustments */
+    .main-nav ul {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        text-align: center;
+    }
+
+    .logo-search {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-form {
+        order: 1; /* Move search below logo */
+        margin-top: var(--spacing-xs);
+    }
+
+    /* Grid Layouts: Single column for mobile */
+    .category-grid,
+    .course-grid {
+        grid-template-columns: 1fr; /* Single column */
+    }
+
+    /* Hero search stacking */
+    .hero-search {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .hero-search input, .hero-search .btn {
+        border-radius: 4px;
+        width: 100%;
+        margin-top: var(--spacing-xs);
+    }
+    
+    .hero-search input {
+        margin-bottom: 0;
+    }
+}
+
+/* Keyframe Animation (Requirement) */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply animation to the Hero section elements */
+.hero-section h1 {
+    animation: fadeInSlide 1s ease-out;
+}
+.hero-section p {
+    animation: fadeInSlide 1s ease-out 0.2s forwards;
+    opacity: 0;
+}
+.hero-search {
+    animation: fadeInSlide 1s ease-out 0.4s forwards;
+    opacity: 0;
+}
